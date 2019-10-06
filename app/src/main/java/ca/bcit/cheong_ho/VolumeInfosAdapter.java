@@ -32,7 +32,7 @@ public class VolumeInfosAdapter extends ArrayAdapter<VolumeInfo> {
         TextView tvLastName = convertView.findViewById(R.id.lastName);
         // Populate the data into the template view using the data object
         tvFirstName.setText(volumeInfo.getTitle());
-        tvLastName.setText(volumeInfo.getPublishedDate());
+        tvLastName.setText(volumeInfo.getPublisher());
 
         ImageView imgOnePhoto = convertView.findViewById(R.id.thumbImage);
         //DownloadImageTask dit = new DownloadImageTask(_context, imgOnePhoto);

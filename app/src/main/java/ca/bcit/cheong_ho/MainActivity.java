@@ -82,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                         String publishedDate = objVolumeInfo.getString("publishedDate");
                         VolumeInfo volInfo = new VolumeInfo();
-//                        if(objVolumeInfo.getString("publisher")!=null) {
-//                            String publisher = objVolumeInfo.getString("publisher");
-//                            volInfo.setPublisher(publisher);
-//                        }
+                        if(i!=0) {
+                            String publisher = objVolumeInfo.getString("publisher");
+                            volInfo.setPublisher(publisher);
+                        }
                         volInfo.setTitle(title);
                         ImageLinks il = new ImageLinks();
                         il.setSmallThumbnail(smallThumbnail);
