@@ -17,7 +17,7 @@ public class VolumeInfo
 
     private String description;
 
-    private List<IndustryIdentifiers> industryIdentifiers;
+    private IndustryIdentifier industryIdentifier;
 
     private ReadingModes readingModes;
 
@@ -79,11 +79,11 @@ public class VolumeInfo
     public String getDescription(){
         return this.description;
     }
-    public void setIndustryIdentifiers(List<IndustryIdentifiers> industryIdentifiers){
-        this.industryIdentifiers = industryIdentifiers;
+    public void setIndustryIdentifier(IndustryIdentifier industryIdentifier){
+        this.industryIdentifier = industryIdentifier;
     }
-    public List<IndustryIdentifiers> getIndustryIdentifiers(){
-        return this.industryIdentifiers;
+    public IndustryIdentifier getIndustryIdentifier(){
+        return this.industryIdentifier;
     }
     public void setReadingModes(ReadingModes readingModes){
         this.readingModes = readingModes;

@@ -6,14 +6,14 @@ import java.util.List;
 
 import ca.bcit.cheong_ho.enums.ISBNType;
 
-public class IndustryIdentifiers {
+public class IndustryIdentifier {
     private List<ISBN>  isbnList;
 
-    public IndustryIdentifiers() {
+    public IndustryIdentifier() {
         isbnList = new ArrayList<>();
     }
 
-    public IndustryIdentifiers(List<ISBN> isbnList) {
+    public IndustryIdentifier(List<ISBN> isbnList) {
         this.isbnList = isbnList;
     }
 
