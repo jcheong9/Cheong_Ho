@@ -1,4 +1,4 @@
-package ca.bcit.cheong_ho;
+package ca.bcit.cheong_ho.http;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,6 +11,8 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import ca.bcit.cheong_ho.R;
 
 class ImageDownloaderTask extends AsyncTask<String, Void, Bitmap> {
     /*

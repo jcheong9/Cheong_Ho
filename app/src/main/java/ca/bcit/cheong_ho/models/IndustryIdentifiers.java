@@ -1,4 +1,4 @@
-package ca.bcit.cheong_ho;
+package ca.bcit.cheong_ho.models;
 
 public class IndustryIdentifiers {
     private String type;

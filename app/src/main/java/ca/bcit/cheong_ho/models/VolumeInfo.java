@@ -1,6 +1,8 @@
-package ca.bcit.cheong_ho;
+package ca.bcit.cheong_ho.models;
 
 import java.util.List;
+
+import ca.bcit.cheong_ho.ReadingModes;
 
 
 public class VolumeInfo
