@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import java.util.List;
-
 import ca.bcit.cheong_ho.VolumeDetailActivity;
 import ca.bcit.cheong_ho.enums.ISBNType;
 import ca.bcit.cheong_ho.models.ISBN;
@@ -15,6 +13,7 @@ import ca.bcit.cheong_ho.models.VolumeInfo;
 
 public class VolumeItemListener implements AdapterView.OnItemClickListener {
     private Context originalContext;
+
     public VolumeItemListener(Context context) {
         this.originalContext = context;
     }
@@ -31,7 +30,7 @@ public class VolumeItemListener implements AdapterView.OnItemClickListener {
         intent.putExtra("publishedDate", volume.getPublishedDate());
         intent.putExtra("description", volume.getDescription());
         intent.putExtra("isbn_10", getISBN10FromVolume(volume).getIdentifier());
-        
+
         originalContext.startActivity(intent);
     }
 
