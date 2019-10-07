@@ -1,6 +1,6 @@
 package ca.bcit.cheong_ho.models;
 
-public class ImageLinks {
+public class ImageLinkInfo {
     private String smallThumbnail;
 
     private String thumbnail;

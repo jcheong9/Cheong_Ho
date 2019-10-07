@@ -1,20 +1,39 @@
 package ca.bcit.cheong_ho.models;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import ca.bcit.cheong_ho.enums.ISBNType;
+
 public class IndustryIdentifiers {
-    private String type;
+    private List<ISBN>  isbnList;
 
-    private String identifier;
+    public IndustryIdentifiers() {
+        isbnList = new ArrayList<>();
+    }
 
-    public void setType(String type){
-        this.type = type;
+    public IndustryIdentifiers(List<ISBN> isbnList) {
+        this.isbnList = isbnList;
     }
-    public String getType(){
-        return this.type;
+
+    public void addISBN(ISBN newISBN) {
+        isbnList.add(newISBN);
     }
-    public void setIdentifier(String identifier){
-        this.identifier = identifier;
+
+    public List<ISBN> getIsbnList() {
+        return isbnList;
     }
-    public String getIdentifier(){
-        return this.identifier;
+
+    public List<ISBN> getISBN(ISBNType type) {
+        List<ISBN> typeList = new ArrayList<>();
+        Iterator<ISBN> it = typeList.iterator();
+        while (it.hasNext()) {
+            ISBN temp = it.next();
+            if (temp.getType() == type) {
+                typeList.add(temp);
+            }
+        }
+        return typeList;
     }
 }

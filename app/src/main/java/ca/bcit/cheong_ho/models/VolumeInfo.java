@@ -2,7 +2,7 @@ package ca.bcit.cheong_ho.models;
 
 import java.util.List;
 
-import ca.bcit.cheong_ho.ReadingModes;
+import ca.bcit.cheong_ho.enums.ReadingModes;
 
 
 public class VolumeInfo
@@ -39,7 +39,7 @@ public class VolumeInfo
 
     private PanelizationSummary panelizationSummary;
 
-    private ImageLinks imageLinks;
+    private ImageLinkInfo imageLinkInfo;
 
     private String language;
 
@@ -48,8 +48,6 @@ public class VolumeInfo
     private String infoLink;
 
     private String canonicalVolumeLink;
-
-
 
     public void setTitle(String title){
         this.title = title;
@@ -147,11 +145,11 @@ public class VolumeInfo
     public PanelizationSummary getPanelizationSummary(){
         return this.panelizationSummary;
     }
-    public void setImageLinks(ImageLinks imageLinks){
-        this.imageLinks = imageLinks;
+    public void setImageLinkInfo(ImageLinkInfo imageLinkInfo){
+        this.imageLinkInfo = imageLinkInfo;
     }
-    public ImageLinks getImageLinks(){
-        return this.imageLinks;
+    public ImageLinkInfo getImageLinkInfo(){
+        return this.imageLinkInfo;
     }
     public void setLanguage(String language){
         this.language = language;

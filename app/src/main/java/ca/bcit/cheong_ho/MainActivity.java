@@ -21,12 +21,13 @@ import ca.bcit.cheong_ho.http.VolumeInfosAdapter;
 import ca.bcit.cheong_ho.models.VolumeInfo;
 
 public class MainActivity extends AppCompatActivity {
-    private String TAG = MainActivity.class.getSimpleName();
-    private ProgressDialog progressDialog;
-    private ListView listView;
     // URL to get contacts JSON
     private static final String SERVICE_URL =
             "https://www.googleapis.com/books/v1/volumes?q=harry+potter";
+
+    private String TAG = MainActivity.class.getSimpleName();
+    private ProgressDialog progressDialog;
+    private ListView listView;
     private ArrayList<VolumeInfo> volumeInfoList;
 
     @Override
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.toonList);
         new GetContacts().execute();
     }
+
     /**
      * Async task class to get json by making HTTP call
      */

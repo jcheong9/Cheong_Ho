@@ -40,8 +40,8 @@ public class VolumeInfosAdapter extends ArrayAdapter<VolumeInfo> {
         ImageView imgOnePhoto = convertView.findViewById(R.id.thumbImage);
         //DownloadImageTask dit = new DownloadImageTask(_context, imgOnePhoto);
         //dit.execute(volumeInfo.getPicture());
-        if (volumeInfo.getImageLinks() != null) {
-            new ImageDownloaderTask(imgOnePhoto).execute(volumeInfo.getImageLinks().getSmallThumbnail());
+        if (volumeInfo.getImageLinkInfo() != null) {
+            new ImageDownloaderTask(imgOnePhoto).execute(volumeInfo.getImageLinkInfo().getSmallThumbnail());
         }
 
         // Return the completed view to render on screen

@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.bcit.cheong_ho.models.ImageLinks;
+import ca.bcit.cheong_ho.models.ImageLinkInfo;
 import ca.bcit.cheong_ho.models.VolumeInfo;
 
 public class VolumeInfoJsonParserService {
@@ -33,13 +33,15 @@ public class VolumeInfoJsonParserService {
         // Get publisher
         String publisher = objVolumeInfo.optString("publisher", "(Publisher unavailable");
 
+        // Set image link info
+        ImageLinkInfo il = new ImageLinkInfo();
+        il.setSmallThumbnail(smallThumbnail);
+
         // Initialize volume info object
         VolumeInfo volInfo = new VolumeInfo();
         volInfo.setPublisher(publisher);
         volInfo.setTitle(title);
-        ImageLinks il = new ImageLinks();
-        il.setSmallThumbnail(smallThumbnail);
-        volInfo.setImageLinks(il);
+        volInfo.setImageLinkInfo(il);
         volInfo.setAuthors(list);
         volInfo.setPublishedDate(publishedDate);
         return volInfo;
