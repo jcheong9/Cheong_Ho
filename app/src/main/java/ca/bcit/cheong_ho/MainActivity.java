@@ -1,7 +1,5 @@
 package ca.bcit.cheong_ho;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,30 +7,39 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import ca.bcit.cheong_ho.helpers.VolumeInfoJsonParserService;
+import ca.bcit.cheong_ho.http.HttpHandler;
+import ca.bcit.cheong_ho.http.VolumeInfosAdapter;
+import ca.bcit.cheong_ho.models.VolumeInfo;
 
 public class MainActivity extends AppCompatActivity {
-    private String TAG = MainActivity.class.getSimpleName();
-    private ProgressDialog pDialog;
-    private ListView lv;
     // URL to get contacts JSON
-    private static String SERVICE_URL = "https://www.googleapis.com/books/v1/volumes?q=harry+potter";
-    private ArrayList<VolumeInfo> toonList;
+    private static final String SERVICE_URL =
+            "https://www.googleapis.com/books/v1/volumes?q=harry+potter";
+
+    private String TAG = MainActivity.class.getSimpleName();
+    private ProgressDialog progressDialog;
+    private ListView listView;
+    private ArrayList<VolumeInfo> volumeInfoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toonList = new ArrayList<VolumeInfo>();
-        lv = findViewById(R.id.toonList);
+        volumeInfoList = new ArrayList<VolumeInfo>();
+        listView = findViewById(R.id.toonList);
         new GetContacts().execute();
     }
+
     /**
      * Async task class to get json by making HTTP call
      */
@@ -42,11 +49,10 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setMessage("Please wait...");
-            pDialog.setCancelable(false);
-            pDialog.show();
-
+            progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
         }
 
         @Override
@@ -70,31 +76,9 @@ public class MainActivity extends AppCompatActivity {
                         item = volInfoJsonArray.getJSONObject(i);
                         String volumeInfo = item.getString("volumeInfo");
                         objVolumeInfo = new JSONObject(volumeInfo);
-                        String title = objVolumeInfo.getString("title");
-                        String imageLinks = objVolumeInfo.getString("imageLinks");
-                        JSONObject objImageLinks = new JSONObject(imageLinks);
-                        String smallThumbnail = objImageLinks.getString("smallThumbnail");
-                        //get jsonarray and put values into list<String>
-                        JSONArray authors = objVolumeInfo.getJSONArray("authors");
-                        List<String> list = new ArrayList<String>();
-                        for(int k = 0; k < authors.length(); k++){
-                            list.add(authors.getString(k));
-                        }
-                        String publishedDate = objVolumeInfo.getString("publishedDate");
-                        VolumeInfo volInfo = new VolumeInfo();
-                        if(i!=0) {
-                            String publisher = objVolumeInfo.getString("publisher");
-                            volInfo.setPublisher(publisher);
-                        }
-                        volInfo.setTitle(title);
-                        ImageLinks il = new ImageLinks();
-                        il.setSmallThumbnail(smallThumbnail);
-                        volInfo.setImageLinks(il);
-                        volInfo.setAuthors(list);
-                        volInfo.setPublishedDate(publishedDate);
-                        toonList.add(volInfo);
+                        VolumeInfo volInfo = VolumeInfoJsonParserService.getVolumeInfoFromJson(objVolumeInfo);
+                        volumeInfoList.add(volInfo);
                     }
-
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -129,15 +113,13 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             // Dismiss the progress dialog
-            if (pDialog.isShowing())
-                pDialog.dismiss();
+            if (progressDialog.isShowing())
+                progressDialog.dismiss();
 
-            //Toon[] toonArray = toonList.toArray(new Toon[toonList.size()]);
-
-            VolumeInfosAdapter adapter = new VolumeInfosAdapter(MainActivity.this, toonList);
+            VolumeInfosAdapter adapter = new VolumeInfosAdapter(MainActivity.this, volumeInfoList);
 
             // Attach the adapter to a ListView
-            lv.setAdapter(adapter);
+            listView.setAdapter(adapter);
         }
     }
 
