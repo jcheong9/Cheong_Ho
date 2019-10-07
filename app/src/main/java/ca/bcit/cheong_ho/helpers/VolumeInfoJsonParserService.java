@@ -31,7 +31,7 @@ public class VolumeInfoJsonParserService {
         String publishedDate = objVolumeInfo.getString("publishedDate");
 
         // Get publisher
-        String publisher = objVolumeInfo.optString("publisher", "(Publisher unavailable");
+        String publisher = objVolumeInfo.optString("publisher", "Publisher unavailable");
 
         // Set image link info
         ImageLinkInfo il = new ImageLinkInfo();
