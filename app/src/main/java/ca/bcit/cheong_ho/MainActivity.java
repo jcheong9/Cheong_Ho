@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import ca.bcit.cheong_ho.helpers.VolumeInfoJsonParserService;
 import ca.bcit.cheong_ho.http.HttpHandler;
 import ca.bcit.cheong_ho.http.VolumeInfosAdapter;
+import ca.bcit.cheong_ho.listeners.VolumeItemListener;
 import ca.bcit.cheong_ho.models.VolumeInfo;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String TAG = MainActivity.class.getSimpleName();
     private ProgressDialog progressDialog;
-    private ListView listView;
+    private ListView volumeListView;
     private ArrayList<VolumeInfo> volumeInfoList;
 
     @Override
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         volumeInfoList = new ArrayList<VolumeInfo>();
-        listView = findViewById(R.id.toonList);
+        volumeListView = findViewById(R.id.volumeList);
+        volumeListView.setOnItemClickListener(new VolumeItemListener(this));
         new GetContacts().execute();
     }
 
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             VolumeInfosAdapter adapter = new VolumeInfosAdapter(MainActivity.this, volumeInfoList);
 
             // Attach the adapter to a ListView
-            listView.setAdapter(adapter);
+            volumeListView.setAdapter(adapter);
         }
     }
 
