@@ -2,7 +2,7 @@ package ca.bcit.cheong_ho.models;
 
 import ca.bcit.cheong_ho.enums.ISBNType;
 
-class ISBN {
+public class ISBN {
     private ISBNType type;
     private String identifier;
 
