@@ -14,7 +14,7 @@ import java.net.URL;
 
 import ca.bcit.cheong_ho.R;
 
-class ImageDownloaderTask extends AsyncTask<String, Void, Bitmap> {
+public class ImageDownloaderTask extends AsyncTask<String, Void, Bitmap> {
     /*
     A weak reference, simply put, is a reference that isn't strong enough to force an object to remain in memory.
     Weak references allow you to leverage the garbage collector's ability to determine reachability for you,

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import ca.bcit.cheong_ho.helpers.VolumeInfoJsonParserService;
 import ca.bcit.cheong_ho.http.HttpHandler;
-import ca.bcit.cheong_ho.http.VolumeInfosAdapter;
+import ca.bcit.cheong_ho.adapters.VolumeInfosAdapter;
 import ca.bcit.cheong_ho.listeners.VolumeItemListener;
 import ca.bcit.cheong_ho.models.VolumeInfo;
 
