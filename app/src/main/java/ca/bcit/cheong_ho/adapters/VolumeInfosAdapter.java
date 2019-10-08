@@ -1,4 +1,4 @@
-package ca.bcit.cheong_ho.http;
+package ca.bcit.cheong_ho.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ca.bcit.cheong_ho.R;
+import ca.bcit.cheong_ho.http.ImageDownloaderTask;
 import ca.bcit.cheong_ho.models.VolumeInfo;
 
 public class VolumeInfosAdapter extends ArrayAdapter<VolumeInfo> {

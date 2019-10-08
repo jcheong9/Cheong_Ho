@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
+import java.util.ArrayList;
+
 import ca.bcit.cheong_ho.VolumeDetailActivity;
 import ca.bcit.cheong_ho.enums.ISBNType;
 import ca.bcit.cheong_ho.models.ISBN;
@@ -25,7 +27,7 @@ public class VolumeItemListener implements AdapterView.OnItemClickListener {
 
         intent.putExtra("title", volume.getTitle());
         intent.putExtra("smallThumbnail", volume.getImageLinkInfo().getSmallThumbnail());
-        intent.putExtra("authors", volume.getAuthors().toArray());
+        intent.putStringArrayListExtra("authors", (ArrayList) volume.getAuthors());
         intent.putExtra("publisher", volume.getPublisher());
         intent.putExtra("publishedDate", volume.getPublishedDate());
         intent.putExtra("description", volume.getDescription());
