@@ -27,7 +27,10 @@ public class VolumeInfoJsonParserService {
         JSONArray authors = objVolumeInfo.getJSONArray("authors");
         List<String> list = new ArrayList<String>();
         for (int k = 0; k < authors.length(); k++) {
+            String str = authors.getString(k);
+            int length = str.length();
             list.add(authors.getString(k));
+
         }
 
         // Get published date

@@ -40,7 +40,7 @@ public class VolumeDetailActivity extends AppCompatActivity {
         List<String> authorsList = extras.getStringArrayList("authors");
         StringBuilder authors = new StringBuilder();
         for(int i = 0; i < authorsList.size() - 1; i++) {
-            authors.append(authorsList.get(i) + ", ");
+            authors.append(authorsList.get(i) + ", \n");
         }
         authors.append(authorsList.get(authorsList.size() - 1));
         TextView authorView = findViewById(R.id.authors);
