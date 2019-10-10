@@ -32,18 +32,8 @@ public class VolumeInfosAdapter extends ArrayAdapter<VolumeInfo> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_row_layout, parent, false);
         }
         // Lookup view for data population
-        TextView tvFirstName = convertView.findViewById(R.id.firstName);
-        TextView tvLastName = convertView.findViewById(R.id.lastName);
-        // Populate the data into the template view using the data object
-        tvFirstName.setText(volumeInfo.getTitle());
-        tvLastName.setText(volumeInfo.getPublisher());
-
-        ImageView imgOnePhoto = convertView.findViewById(R.id.thumbImage);
-        //DownloadImageTask dit = new DownloadImageTask(_context, imgOnePhoto);
-        //dit.execute(volumeInfo.getPicture());
-        if (volumeInfo.getImageLinkInfo() != null) {
-            new ImageDownloaderTask(imgOnePhoto).execute(volumeInfo.getImageLinkInfo().getSmallThumbnail());
-        }
+        TextView tvTitle = convertView.findViewById(R.id.title);
+        tvTitle.setText(volumeInfo.getTitle());
 
         // Return the completed view to render on screen
         return convertView;
