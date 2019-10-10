@@ -56,6 +56,9 @@ public class VolumeInfoJsonParserService {
         ImageLinkInfo il = new ImageLinkInfo();
         il.setSmallThumbnail(smallThumbnail);
 
+        // Set description
+        String description = objVolumeInfo.optString("description", "No description available");
+
         // Initialize volume info object
         VolumeInfo volInfo = new VolumeInfo();
         volInfo.setIndustryIdentifier(industryIdentifier);
@@ -64,6 +67,7 @@ public class VolumeInfoJsonParserService {
         volInfo.setImageLinkInfo(il);
         volInfo.setAuthors(list);
         volInfo.setPublishedDate(publishedDate);
+        volInfo.setDescription(description);
         return volInfo;
     }
 }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Cheong_Ho</string>
+    <string name="authorsLabel">Authors:</string>
+    <string name="publisherLabel">Publishers:</string>
+    <string name="publishedDateLabel">Published date:</string>
+    <string name="isbnLabel">ISBN 10:</string>
 </resources>

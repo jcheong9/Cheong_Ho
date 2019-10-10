@@ -3,17 +3,11 @@ package ca.bcit.cheong_ho;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import ca.bcit.cheong_ho.adapters.AuthorInfoAdapter;
 import ca.bcit.cheong_ho.http.ImageDownloaderTask;
 
 public class VolumeDetailActivity extends AppCompatActivity {
@@ -44,12 +38,13 @@ public class VolumeDetailActivity extends AppCompatActivity {
 
         // Set authors
         List<String> authorsList = extras.getStringArrayList("authors");
-        ListView authorView = findViewById(R.id.authors);
-        ArrayAdapter<String> arrayAdapter = new AuthorInfoAdapter(
-                VolumeDetailActivity.this,
-                authorsList
-        );
-        authorView.setAdapter(arrayAdapter);
+        StringBuilder authors = new StringBuilder();
+        for(int i = 0; i < authorsList.size() - 1; i++) {
+            authors.append(authorsList.get(i) + ", ");
+        }
+        authors.append(authorsList.get(authorsList.size() - 1));
+        TextView authorView = findViewById(R.id.authors);
+        authorView.setText(authors.toString());
     }
 
     private void setTextViewFromExtra(String key, int viewId) {
