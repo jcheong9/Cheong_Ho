@@ -6,3 +6,5 @@
 - [ ] Handle layout switching (landscape -> portrait & vice versa)
 - [x] Display images correctly
 ~- [ ] Set API to 23~
+- [ ] Set color style and theme
+- [ ] Add readme.txt and .apk
